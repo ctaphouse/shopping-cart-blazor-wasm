@@ -2,10 +2,10 @@
 @inherits CartBase
 
 <h3>Your Extra Super Extra Duper New Shopping Cart</h3>
-git 
+
 @if(Model != null){
     @foreach (var line in Model.Items)
     {
-        <Item Details="@line"/>
+        <Item Details="@line" OnDeleted="ReloadCart" OnQuantityChanged="ReloadCart"/>
     }
 }
