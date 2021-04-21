@@ -3,9 +3,19 @@
 
 <h3>Your Extra Super Extra Duper New Shopping Cart</h3>
 
-@if(Model != null){
+@if (Model != null)
+{
     @foreach (var line in Model.Items)
     {
-        <Item Details="@line" OnDeleted="ReloadCart" OnQuantityChanged="ReloadCart"/>
+        <Item Details="@line" OnDeleted="ReloadCart" OnQuantityChanged="ReloadCart" />
     }
+
+    <div class="row py-4">
+        <div class="col-sm">
+            Total:
+        </div>
+        <div class="col-sm-2">
+            @Total
+        </div>
+    </div>
 }
