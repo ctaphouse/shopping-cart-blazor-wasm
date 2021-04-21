@@ -14,6 +14,16 @@ namespace ShoppingCartStarter.Client.Pages.Cart
 
         protected override async Task OnInitializedAsync()
         {
+            await ReloadCart();
+        }
+
+        protected void RemoveItem(Details.Model.LineItem item)
+        {
+            Model.Items.Remove(item);
+        }
+
+        protected async Task ReloadCart()
+        {
             Model = await Http.GetFromJsonAsync<Details.Model>("api/cart");
         }
     }
