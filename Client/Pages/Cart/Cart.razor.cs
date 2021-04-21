@@ -12,6 +12,8 @@ namespace ShoppingCartStarter.Client.Pages.Cart
 
         protected Details.Model Model { get; set; }
 
+        public decimal Total { get; set; } = 123;
+
         protected override async Task OnInitializedAsync()
         {
             await ReloadCart();
@@ -25,6 +27,15 @@ namespace ShoppingCartStarter.Client.Pages.Cart
         protected async Task ReloadCart()
         {
             Model = await Http.GetFromJsonAsync<Details.Model>("api/cart");
+
+            decimal total = 0;
+
+            foreach(var item in Model.Items)
+            {
+                total = total + (item.Price * item.Quantity);
+            }
+
+            Total = total;
         }
     }
 }
